@@ -9,18 +9,21 @@ Return {status: "INSUFFICIENT_FUNDS", change: []} if cash-in-drawer is less than
 Return {status: "CLOSED", change: [...]} with cash-in-drawer as the value for the key change if it is equal to the change due.
 
 Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.*/
+
+//Obj
+const currency={
+  "ONE HUNDRED": 100*100,
+  "TWENTY":20*100,
+  "TEN":10*100,
+  "FIVE":5*100,
+  "ONE": 1*100,
+  "QUARTER": 0.25*100,
+  "DIME":0.10*100,
+  "NICKEL":0.05*100,
+  "PENNY": 0.01*100
+};
 function checkCashRegister(price, cash, cid) {
-let change =[
-  ["Penny", 0.01],
-  ["Nickel",0.05],
-  ["Dime", 0.10],
-  ["Quater",0.25],
-  ["Dollar",1],
-  ["Five Dollars", 5],
-  ["Ten Dollars", 10],
-  ["Twenty Dollars", 20],
-  ["One-hundred Dollars",100],
-];
+
 
 
 
