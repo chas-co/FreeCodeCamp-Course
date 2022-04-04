@@ -47,7 +47,51 @@ function checkCashRegister(price, cash, cid) {
   // Cash register logic
   //----------------------------------------------------------------------------------------------------------------------------
   
+  //if cash-in-drawer is less than the change due,
+  if (changeDue > cidValue){
+    return {status: "INSUFFICIENT_FUNDS", change: []};
+  }
+ 
+  //if cash in drawere is equal to the change due.
+  else if (changeDue === cidValue){
+   return {status: "CLOSED", change: cid };
+  }
+  //If change can be given to customer. the change due in coins and bills, sorted in highest to lowest order
+  else {
+    
+    //loop through each denomination
+    denominations.forEach((denom)=>{
+      //check if we have the denomination present in the register
+        if(cidObj[denom]> 0){
+          
+          let amount =0;
+          
+          //check how many notes of the denomination are present in the register
+          let temp1 = Math.round(cidObj[denom]/currency[denom]);
+          
+          //check how many notes of the denomination can be issued as change.
+          let temp = Math.floor(changeDue/currency[denom]);
+          
+          // do we have more notes than we need to issue out? Yes:issue out only what we need to issue out No: Issue out all that we have
+          temp<=temp1? amount = temp * currency[denom]: amount = temp1*currency[denom] ;
+          
+          // subtract the value of the notes issued out from the change due
+          changeDue -= amount;
+          
+          //add the issued out denominations and their value to the change array.
+          temp>=1? change.push([denom,amount/100]): false;
+          }
+    })
+    // if you cannot return the exact change
+    if (changeDue>0){
+      return {status: "INSUFFICIENT_FUNDS", change: []};
+    }
+  
+    return {status: "OPEN", change:change};
+  }
 
+  return change;
+}
 
 
 }
