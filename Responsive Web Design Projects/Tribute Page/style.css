@@ -4,3 +4,9 @@
   margin: 0 auto;
   display: block;
 }
+
+#main{
+  font-family: sans-serif;
+  display: block;
+  text-align: center;
+}
