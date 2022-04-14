@@ -10,3 +10,10 @@
   display: block;
   text-align: center;
 }
+
+#title{
+  background: black;
+  color: white;
+  font-size: 100px;
+  margin-bottom:0px;
+}
