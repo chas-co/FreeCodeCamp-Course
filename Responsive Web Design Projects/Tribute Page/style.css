@@ -33,6 +33,11 @@ p{
 }
 ul{
   text-align: left;
+   font-size: 15px;
+  max-width: 750px;
+  margin: 0 auto 50px auto;
+  text-align: justify;
+  line-height: 2;
 }
 #tribute-info{
   background: white;
