@@ -8,7 +8,15 @@ function App() {
   const [author, setAuthor] = useState("Iron Born");
   const [quotesArray, setQuotesArray] = useState([]);
 
-  
+  const fetchQuotes = async (link) =>{
+    const response = await fetch(link);
+    const parsed = await response.json();
+    setQuotesArray(parsed.quotes)
+  } 
+
+  useEffect(()=>{
+    fetchQuotes(quotesLink);
+  });
   
   return (
     <div className="App">
@@ -16,7 +24,6 @@ function App() {
         <div id= "quote-box">
         <div id="text">"{quote}"</div>
         <div id="author">- {author}</div>
-       
         </div>
       </header>
     </div>
