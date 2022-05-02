@@ -18,12 +18,19 @@ function App() {
     fetchQuotes(quotesLink);
   });
   
+  function getNewQuote(){
+    let quoteIndex = Math.floor(Math.random() * quotesArray.length);
+    setAuthor(quotesArray[quoteIndex].author);
+    setQuote(quotesArray[quoteIndex].quote);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <div id= "quote-box">
         <div id="text">"{quote}"</div>
         <div id="author">- {author}</div>
+        <button id="new-quote" onClick={()=> getNewQuote()}>New Quote</button>
         </div>
       </header>
     </div>
