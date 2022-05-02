@@ -31,7 +31,7 @@ function App() {
         <div id="text">"{quote}"</div>
         <div id="author">- {author}</div>
         <button id="new-quote" onClick={()=> getNewQuote()}>New Quote</button>
-        <a id="tweet-quote" href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)} >Tweet</a>
+        <a id="tweet-quote" target="_blank" href={encodeURI(`http://www.twitter.com/intent/tweet?text=${quote} -${author}`)} >Tweet</a>
         </div>
       </header>
     </div>
